@@ -1,14 +1,23 @@
 # General
 **/.DS_Store
-/dist/
+dist
+dist-ssr
+coverage
+*.local
 
-# VS Code
+# Editor directories and files
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/*.code-snippets
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 # Local History for Visual Studio Code
 .history/
