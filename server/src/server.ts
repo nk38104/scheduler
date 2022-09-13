@@ -11,6 +11,6 @@ app.get("/", (_req: Request, res: Response): void => {
   res.send("Hello there!");
 });
 
-app.listen(port || 5000, (): void => {
+app.listen(port || 8001, (): void => {
   console.log(`Server running at 'http://${hostname}:${port}' ...`);
 });
