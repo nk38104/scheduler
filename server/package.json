@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "dev": "nodemon ./src/server.ts",
+    "dev": "nodemon -r ./node_modules/dotenv/config ./src/server.ts",
     "lint:check": "eslint src",
     "format:check": "prettier --write src --config ./.prettierrc.json"
   },
