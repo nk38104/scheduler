@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "lint": "concurrently \"pnpm --prefix server run lint:check\" \"pnpm --prefix client run lint:check\"",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
