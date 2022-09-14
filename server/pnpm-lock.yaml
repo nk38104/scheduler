@@ -11,6 +11,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.36.2
   '@typescript-eslint/parser': ^5.36.2
   cors: ^2.8.5
+  dotenv: ^16.0.2
   eslint: ^8.23.0
   eslint-config-prettier: ^8.5.0
   eslint-config-semistandard: ^17.0.0
@@ -43,6 +44,7 @@ devDependencies:
   '@types/node': 18.7.14
   '@typescript-eslint/eslint-plugin': 5.36.2_iurrlxgqcgk5svigzxakafpeuu
   '@typescript-eslint/parser': 5.36.2_yqf6kl63nyoq5megxukfnom5rm
+  dotenv: 16.0.2
   eslint: 8.23.0
   eslint-config-prettier: 8.5.0_eslint@8.23.0
   eslint-config-semistandard: 17.0.0_iock24gjihlvrwjaqu5x6n5exe
@@ -1038,6 +1040,11 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       esutils: 2.0.3
+    dev: true
+
+  /dotenv/16.0.2:
+    resolution: {integrity: sha512-JvpYKUmzQhYoIFgK2MOnF3bciIZoItIIoryihy0rIA+H4Jy0FmgyKYAHCTN98P5ybGSJcIFbh6QKeJdtZd1qhA==}
+    engines: {node: '>=12'}
     dev: true
 
   /ee-first/1.1.1:
