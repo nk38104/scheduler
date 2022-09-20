@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  postgres:
+    container_name: postgres-container
+    image: postgres:14
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    restart: always
+    volumes:
+      - postgres-data:/data/db
+    networks:
+      - postgres-net
+    ports:
+      - 5432:5432
+
+  api:
+    container_name: api-container
+    build: ./server
+    depends_on:
+      - postgres
+    networks:
+      - postgres-net
+    ports:
+      - 8001:8001
+
+  client:
+    container_name: client-container
+    build: ./client
+    depends_on:
+      - api
+    ports:
+      - 8000:8000
+
+networks:
+  postgres-net:
+    name: postgres-net
+
+volumes:
+  postgres-data:
+    name: postgres-data
