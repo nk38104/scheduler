@@ -1,0 +1,80 @@
+export const subjects = [
+  {
+    subjectCode: "HJ1",
+    name: "Hrvatski jezik",
+    hoursPerWeek: 5,
+    maxHoursPerDay: 2,
+  },
+  {
+    subjectCode: "LK1",
+    name: "Likovna kultura",
+    hoursPerWeek: 2,
+    maxHoursPerDay: 2,
+  },
+  {
+    subjectCode: "GK1",
+    name: "Glazbena kultura",
+    hoursPerWeek: 1,
+    maxHoursPerDay: 1,
+  },
+  {
+    subjectCode: "EJ1",
+    name: "Engleski jezik",
+    hoursPerWeek: 4,
+    maxHoursPerDay: 2,
+  },
+  {
+    subjectCode: "MA1",
+    name: "Matematika",
+    hoursPerWeek: 4,
+    maxHoursPerDay: 1,
+  },
+  {
+    subjectCode: "PR1",
+    name: "Priroda",
+    hoursPerWeek: 2,
+    maxHoursPerDay: 1,
+  },
+  {
+    subjectCode: "PO1",
+    name: "Povijest",
+    hoursPerWeek: 2,
+    maxHoursPerDay: 1,
+  },
+  {
+    subjectCode: "GE1",
+    name: "Geografija",
+    hoursPerWeek: 2,
+    maxHoursPerDay: 2,
+  },
+  {
+    subjectCode: "TK1",
+    name: "Tehnička kultura",
+    hoursPerWeek: 1,
+    maxHoursPerDay: 1,
+  },
+  {
+    subjectCode: "IN1",
+    name: "Informatika",
+    hoursPerWeek: 2,
+    maxHoursPerDay: 1,
+  },
+  {
+    name: "Tjelesni",
+    subjectCode: "TJ1",
+    hoursPerWeek: 2,
+    maxHoursPerDay: 2,
+  },
+  {
+    subjectCode: "VJ1",
+    name: "Vjeronauk",
+    hoursPerWeek: 3,
+    maxHoursPerDay: 1,
+  },
+  {
+    subjectCode: "SR1",
+    name: "Sat razrednika",
+    hoursPerWeek: 1,
+    maxHoursPerDay: 1,
+  },
+];
