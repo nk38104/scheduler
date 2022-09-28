@@ -36,11 +36,12 @@ async function createUser() {
 }
 
 main()
-  .catch((error) => {
-    console.log(error);
-    process.exit(1);
-  })
-  .finally(() => {
+  .then(() => {
     console.log("Successfully seeded database. Closing connection.");
     prisma.$disconnect();
+  })
+  .catch((error) => {
+    console.log(error);
+    prisma.$disconnect();
+    process.exit(1);
   });
