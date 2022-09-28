@@ -5,22 +5,27 @@ const get = async (req: Request, resp: Response) => {
   try {
     const id: number = req.body.id;
 
-    if (id < 1 || !id) {
-      throw Error("Invalid request.");
-    }
-
     const user = await userService.get(id);
-
-    if (!user) {
-      throw Error("User not found.");
-    }
 
     resp.status(200).json(user);
   } catch (err: any) {
-    resp.status(500).send(err);
+    resp.status(500).send(err.name);
+  }
+};
+
+const update = async (req: Request, resp: Response) => {
+  try {
+    const { id, email } = req.body;
+
+    const user = await userService.update(id, email);
+
+    resp.status(200).send(user);
+  } catch (err: any) {
+    resp.status(500).send(err.meta.cause);
   }
 };
 
 export default {
   get,
+  update,
 };
