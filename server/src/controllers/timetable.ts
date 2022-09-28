@@ -13,6 +13,19 @@ const create = async (req: Request, resp: Response) => {
   }
 };
 
+const get = async (req: Request, resp: Response) => {
+  try {
+    const userId: number = req.body.id;
+
+    const timetable = await timetableService.get(userId);
+
+    resp.status(200).json(timetable);
+  } catch (err: any) {
+    resp.status(500).send(err.name);
+  }
+};
+
 export default {
   create,
+  get,
 };
