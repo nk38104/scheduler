@@ -9,3 +9,96 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id                          Int           @id @default(autoincrement())
+  email                       String        @unique
+  password                    String
+  createdAt                   DateTime      @default(now())
+  updatedAt                   DateTime      @updatedAt
+  timetable                   Timetable?
+  Class                       Class[]
+  Teacher                     Teacher[]
+  Subject                     Subject[]
+  classrooms                  Classroom[]
+  ClassesOnSubjectsOnTeachers Arrangement[]
+}
+
+model Timetable {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int      @unique
+  data      Json     @db.JsonB
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Classroom {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int
+  name      String
+  capacity  Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  subject   Subject? @relation(fields: [subjectId], references: [id])
+  subjectId Int?
+
+  @@unique([userId, name])
+}
+
+model Subject {
+  id                          Int           @id @default(autoincrement())
+  user                        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId                      Int
+  subjectCode                 String
+  name                        String
+  hoursPerWeek                Int           @default(0)
+  maxHoursPerDay              Int           @default(0)
+  createdAt                   DateTime      @default(now())
+  updatedAt                   DateTime      @updatedAt
+  classrooms                  Classroom[]
+  ClassesOnSubjectsOnTeachers Arrangement[]
+
+  @@unique([userId, subjectCode])
+}
+
+model Teacher {
+  id                          Int           @id @default(autoincrement())
+  user                        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId                      Int
+  teacherCode                 String
+  firstName                   String
+  lastName                    String
+  createdAt                   DateTime      @default(now())
+  updatedAt                   DateTime      @updatedAt
+  ClassesOnSubjectsOnTeachers Arrangement[]
+
+  @@unique([userId, teacherCode])
+}
+
+model Class {
+  id                          Int           @id @default(autoincrement())
+  User                        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId                      Int
+  name                        String
+  studentCount                Int           @default(0)
+  createdAt                   DateTime      @default(now())
+  updatedAt                   DateTime      @updatedAt
+  ClassesOnSubjectsOnTeachers Arrangement[]
+
+  @@unique([userId, name])
+}
+
+model Arrangement {
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int
+  class     Class   @relation(fields: [classId], references: [id], onDelete: Cascade)
+  classId   Int
+  teacher   Teacher @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  teacherId Int
+  subject   Subject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  subjectId Int
+
+  @@id([userId, classId, teacherId, subjectId])
+}
