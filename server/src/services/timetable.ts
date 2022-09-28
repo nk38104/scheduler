@@ -20,7 +20,21 @@ const get = async (id: number) => {
   return timetable;
 };
 
+const update = async (id: number, newTimetableData: Prisma.JsonObject) => {
+  const timetable = await prisma.timetable.update({
+    where: {
+      userId: id,
+    },
+    data: {
+      timetableData: newTimetableData,
+    },
+  });
+
+  return timetable;
+};
+
 export default {
   create,
   get,
+  update,
 };
