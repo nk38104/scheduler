@@ -25,7 +25,20 @@ const update = async (req: Request, resp: Response) => {
   }
 };
 
+const remove = async (req: Request, resp: Response) => {
+  try {
+    const id: number = req.body.id;
+
+    const user = await userService.remove(id);
+
+    resp.status(200).send(user);
+  } catch (err: any) {
+    resp.status(500).send(err.meta.cause);
+  }
+};
+
 export default {
   get,
   update,
+  remove,
 };
