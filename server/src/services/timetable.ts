@@ -33,8 +33,17 @@ const update = async (id: number, newTimetableData: Prisma.JsonObject) => {
   return timetable;
 };
 
+const remove = async (id: number) => {
+  const timetable = await prisma.timetable.delete({
+    where: { id },
+  });
+
+  return timetable;
+};
+
 export default {
   create,
   get,
   update,
+  remove,
 };
