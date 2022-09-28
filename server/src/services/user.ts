@@ -9,22 +9,22 @@ const get = async (id: number) => {
 };
 
 const update = async (id: number, email: string) => {
-  const updateUser = await prisma.user.update({
+  const user = await prisma.user.update({
     where: { id },
     data: {
       email,
     },
   });
 
-  return updateUser;
+  return user;
 };
 
 const remove = async (id: number) => {
-  const deleteUser = await prisma.user.delete({
+  const user = await prisma.user.delete({
     where: { id },
   });
 
-  return deleteUser;
+  return user;
 };
 
 export default {
