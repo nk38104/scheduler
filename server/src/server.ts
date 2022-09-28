@@ -8,11 +8,7 @@ const hostname = server.hostname;
 const app: Application = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: true,
-  }),
-);
+app.use(cors({ origin: true }));
 app.use("/api", router);
 
 app.listen(port, (): void => {
