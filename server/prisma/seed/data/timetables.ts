@@ -1,5 +1,5 @@
 export const timetables = [
   {
-    data: {},
+    timetableData: {},
   },
 ];
