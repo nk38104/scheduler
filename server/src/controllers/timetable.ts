@@ -25,7 +25,20 @@ const get = async (req: Request, resp: Response) => {
   }
 };
 
+const update = async (req: Request, resp: Response) => {
+  try {
+    const { id, timetableData } = req.body;
+
+    const timetable = await timetableService.update(id, timetableData);
+
+    resp.status(200).send(timetable);
+  } catch (err: any) {
+    resp.status(500).send(err.meta.cause);
+  }
+};
+
 export default {
   create,
   get,
+  update,
 };
