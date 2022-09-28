@@ -12,6 +12,15 @@ const create = async (id: number, newTimetableData: Prisma.JsonObject) => {
   return timetable;
 };
 
+const get = async (id: number) => {
+  const timetable = await prisma.timetable.findUniqueOrThrow({
+    where: { userId: id },
+  });
+
+  return timetable;
+};
+
 export default {
   create,
+  get,
 };
