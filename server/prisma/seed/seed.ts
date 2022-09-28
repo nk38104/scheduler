@@ -30,7 +30,7 @@ async function createUser() {
 
   if (userExists) throw Error("User already exits. Please, change user seed data.");
 
-  return await prisma.user.create({
+  return prisma.user.create({
     data: user,
   });
 }
