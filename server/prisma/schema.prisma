@@ -11,17 +11,17 @@ datasource db {
 }
 
 model User {
-  id                          Int                           @id @default(autoincrement())
-  email                       String                        @unique
+  id                          Int           @id @default(autoincrement())
+  email                       String        @unique
   password                    String
-  createdAt                   DateTime                      @default(now())
-  updatedAt                   DateTime                      @updatedAt
+  createdAt                   DateTime      @default(now())
+  updatedAt                   DateTime      @updatedAt
   timetable                   Timetable?
   Class                       Class[]
   Teacher                     Teacher[]
   Subject                     Subject[]
   classrooms                  Classroom[]
-  ClassesOnSubjectsOnTeachers ClassesOnSubjectsOnTeachers[]
+  ClassesOnSubjectsOnTeachers Arrangement[]
 }
 
 model Timetable {
@@ -48,49 +48,49 @@ model Classroom {
 }
 
 model Subject {
-  id                          Int                           @id @default(autoincrement())
-  user                        User                          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                          Int           @id @default(autoincrement())
+  user                        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId                      Int
   subjectCode                 String
   name                        String
-  hoursPerWeek                Int                           @default(0)
-  maxHoursPerDay              Int                           @default(0)
-  createdAt                   DateTime                      @default(now())
-  updatedAt                   DateTime                      @updatedAt
+  hoursPerWeek                Int           @default(0)
+  maxHoursPerDay              Int           @default(0)
+  createdAt                   DateTime      @default(now())
+  updatedAt                   DateTime      @updatedAt
   classrooms                  Classroom[]
-  ClassesOnSubjectsOnTeachers ClassesOnSubjectsOnTeachers[]
+  ClassesOnSubjectsOnTeachers Arrangement[]
 
   @@unique([userId, subjectCode])
 }
 
 model Teacher {
-  id                          Int                           @id @default(autoincrement())
-  user                        User                          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                          Int           @id @default(autoincrement())
+  user                        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId                      Int
   teacherCode                 String
   firstName                   String
   lastName                    String
-  createdAt                   DateTime                      @default(now())
-  updatedAt                   DateTime                      @updatedAt
-  ClassesOnSubjectsOnTeachers ClassesOnSubjectsOnTeachers[]
+  createdAt                   DateTime      @default(now())
+  updatedAt                   DateTime      @updatedAt
+  ClassesOnSubjectsOnTeachers Arrangement[]
 
   @@unique([userId, teacherCode])
 }
 
 model Class {
-  id                          Int                           @id @default(autoincrement())
-  User                        User                          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                          Int           @id @default(autoincrement())
+  User                        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId                      Int
   name                        String
-  studentCount                Int                           @default(0)
-  createdAt                   DateTime                      @default(now())
-  updatedAt                   DateTime                      @updatedAt
-  ClassesOnSubjectsOnTeachers ClassesOnSubjectsOnTeachers[]
+  studentCount                Int           @default(0)
+  createdAt                   DateTime      @default(now())
+  updatedAt                   DateTime      @updatedAt
+  ClassesOnSubjectsOnTeachers Arrangement[]
 
   @@unique([userId, name])
 }
 
-model ClassesOnSubjectsOnTeachers {
+model Arrangement {
   user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    Int
   class     Class   @relation(fields: [classId], references: [id], onDelete: Cascade)
