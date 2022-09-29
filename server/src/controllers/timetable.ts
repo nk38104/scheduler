@@ -15,9 +15,9 @@ const create = async (req: Request, resp: Response) => {
 
 const get = async (req: Request, resp: Response) => {
   try {
-    const userId: number = req.body.id;
+    const { id } = req.params;
 
-    const timetable = await timetableService.get(userId);
+    const timetable = await timetableService.get(id);
 
     resp.status(200).json(timetable);
   } catch (err: any) {

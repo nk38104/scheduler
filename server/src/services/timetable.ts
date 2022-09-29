@@ -12,9 +12,9 @@ const create = async (id: number, newTimetableData: Prisma.JsonObject) => {
   return timetable;
 };
 
-const get = async (id: number) => {
+const get = async (id: string) => {
   const timetable = await prisma.timetable.findUniqueOrThrow({
-    where: { userId: id },
+    where: { id: Number(id) },
   });
 
   return timetable;
