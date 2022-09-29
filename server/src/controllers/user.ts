@@ -15,7 +15,8 @@ const get = async (req: Request, resp: Response) => {
 
 const update = async (req: Request, resp: Response) => {
   try {
-    const { id, email } = req.body;
+    const { id } = req.params;
+    const { email } = req.body;
 
     const user = await userService.update(id, email);
 
@@ -27,7 +28,7 @@ const update = async (req: Request, resp: Response) => {
 
 const remove = async (req: Request, resp: Response) => {
   try {
-    const id: number = req.body.id;
+    const { id } = req.params;
 
     const user = await userService.remove(id);
 
