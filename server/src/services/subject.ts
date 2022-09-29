@@ -20,9 +20,9 @@ const create = async (
   return subject;
 };
 
-const getById = async (id: number) => {
+const get = async (id: string) => {
   const subject = await prisma.subject.findUniqueOrThrow({
-    where: { id },
+    where: { id: Number(id) },
   });
 
   return subject;
@@ -39,14 +39,14 @@ const getAll = async (userId: number) => {
 };
 
 const update = async (
-  id: number,
+  id: string,
   subjectCode: string,
   name: string,
   hoursPerWeek: number,
   maxHoursPerDay: number,
 ) => {
   const subject = await prisma.subject.update({
-    where: { id },
+    where: { id: Number(id) },
     data: {
       subjectCode,
       name,
@@ -58,9 +58,9 @@ const update = async (
   return subject;
 };
 
-const remove = async (id: number) => {
+const remove = async (id: string) => {
   const subject = await prisma.subject.delete({
-    where: { id },
+    where: { id: Number(id) },
   });
 
   return subject;
@@ -68,7 +68,7 @@ const remove = async (id: number) => {
 
 export default {
   create,
-  getById,
+  get,
   getAll,
   update,
   remove,

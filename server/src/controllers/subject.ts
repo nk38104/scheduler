@@ -21,9 +21,9 @@ const create = async (req: Request, resp: Response) => {
 
 const get = async (req: Request, resp: Response) => {
   try {
-    const id: number = req.body.id;
+    const { id } = req.params;
 
-    const subject = await subjectService.getById(id);
+    const subject = await subjectService.get(id);
 
     resp.status(200).json(subject);
   } catch (err: any) {
@@ -45,7 +45,8 @@ const getAll = async (req: Request, resp: Response) => {
 
 const update = async (req: Request, resp: Response) => {
   try {
-    const { id, subjectCode, name, hoursPerWeek, maxHoursPerDay } = req.body;
+    const { id } = req.params;
+    const { subjectCode, name, hoursPerWeek, maxHoursPerDay } = req.body;
 
     const subject = await subjectService.update(
       id,
@@ -63,7 +64,7 @@ const update = async (req: Request, resp: Response) => {
 
 const remove = async (req: Request, resp: Response) => {
   try {
-    const id: number = req.body.id;
+    const { id } = req.params;
 
     const subject = await subjectService.remove(id);
 
