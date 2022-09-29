@@ -31,9 +31,9 @@ const getAll = async (userId: number) => {
   return teacher;
 };
 
-const update = async (id: number, teacherCode: string, firstName: string, lastName: string) => {
+const update = async (id: string, teacherCode: string, firstName: string, lastName: string) => {
   const teacher = await prisma.teacher.update({
-    where: { id },
+    where: { id: Number(id) },
     data: {
       teacherCode,
       firstName,
@@ -44,9 +44,9 @@ const update = async (id: number, teacherCode: string, firstName: string, lastNa
   return teacher;
 };
 
-const remove = async (id: number) => {
+const remove = async (id: string) => {
   const teacher = await prisma.teacher.delete({
-    where: { id },
+    where: { id: Number(id) },
   });
 
   return teacher;

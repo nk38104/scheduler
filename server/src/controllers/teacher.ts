@@ -39,7 +39,8 @@ const getAll = async (req: Request, resp: Response) => {
 
 const update = async (req: Request, resp: Response) => {
   try {
-    const { id, teacherCode, firstName, lastName } = req.body;
+    const { id } = req.params;
+    const { teacherCode, firstName, lastName } = req.body;
 
     const teacher = await teacherService.update(id, teacherCode, firstName, lastName);
 
@@ -51,7 +52,7 @@ const update = async (req: Request, resp: Response) => {
 
 const remove = async (req: Request, resp: Response) => {
   try {
-    const id: number = req.body.id;
+    const { id } = req.params;
 
     const teacher = await teacherService.remove(id);
 
