@@ -37,7 +37,8 @@ const getAll = async (_req: Request, resp: Response) => {
 
 const update = async (req: Request, resp: Response) => {
   try {
-    const { id, name, capacity } = req.body;
+    const { id } = req.params;
+    const { name, capacity } = req.body;
 
     const classroom = await classroomService.update(id, name, capacity);
 
@@ -49,7 +50,7 @@ const update = async (req: Request, resp: Response) => {
 
 const remove = async (req: Request, resp: Response) => {
   try {
-    const id: number = req.body.id;
+    const { id } = req.params;
 
     const classroom = await classroomService.remove(id);
 

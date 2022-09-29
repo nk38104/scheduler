@@ -26,9 +26,9 @@ const getAll = async () => {
   return classroom;
 };
 
-const update = async (id: number, name: string, capacity: number) => {
+const update = async (id: string, name: string, capacity: number) => {
   const classroom = await prisma.classroom.update({
-    where: { id },
+    where: { id: Number(id) },
     data: {
       name,
       capacity,
@@ -38,9 +38,9 @@ const update = async (id: number, name: string, capacity: number) => {
   return classroom;
 };
 
-const remove = async (id: number) => {
+const remove = async (id: string) => {
   const classroom = await prisma.classroom.delete({
-    where: { id },
+    where: { id: Number(id) },
   });
 
   return classroom;
