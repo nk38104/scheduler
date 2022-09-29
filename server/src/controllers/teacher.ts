@@ -25,7 +25,7 @@ const get = async (req: Request, resp: Response) => {
   }
 };
 
-const getAll = async (req: Request, resp: Response) => {
+const getAll = async (_req: Request, resp: Response) => {
   try {
     const teachers = await teacherService.getAll();
 
