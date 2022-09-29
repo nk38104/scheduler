@@ -20,12 +20,8 @@ const get = async (id: string) => {
   return schoolClass;
 };
 
-const getAll = async (userId: number) => {
-  const schoolClass = await prisma.class.findMany({
-    where: {
-      userId,
-    },
-  });
+const getAll = async () => {
+  const schoolClass = await prisma.class.findMany();
 
   return schoolClass;
 };

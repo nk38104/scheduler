@@ -25,11 +25,9 @@ const get = async (req: Request, resp: Response) => {
   }
 };
 
-const getAll = async (req: Request, resp: Response) => {
+const getAll = async (_req: Request, resp: Response) => {
   try {
-    const userId: number = req.body.id;
-
-    const schoolClasses = await classService.getAll(userId);
+    const schoolClasses = await classService.getAll();
 
     resp.status(200).json(schoolClasses);
   } catch (err: any) {
