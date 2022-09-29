@@ -12,16 +12,16 @@ const create = async (userId: number, name: string, capacity: number) => {
   return classroom;
 };
 
-const getById = async (id: number) => {
+const get = async (id: string) => {
   const classroom = await prisma.classroom.findUniqueOrThrow({
-    where: { id },
+    where: { id: Number(id) },
   });
 
   return classroom;
 };
 
 const getAll = async () => {
-  const classroom = await prisma.classroom.findMany({});
+  const classroom = await prisma.classroom.findMany();
 
   return classroom;
 };
@@ -48,7 +48,7 @@ const remove = async (id: number) => {
 
 export default {
   create,
-  getById,
+  get,
   getAll,
   update,
   remove,
