@@ -15,9 +15,9 @@ const create = async (req: Request, resp: Response) => {
 
 const get = async (req: Request, resp: Response) => {
   try {
-    const id: number = req.body.id;
+    const { id } = req.params;
 
-    const teacher = await teacherService.getById(id);
+    const teacher = await teacherService.get(id);
 
     resp.status(200).json(teacher);
   } catch (err: any) {

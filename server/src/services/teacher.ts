@@ -13,9 +13,9 @@ const create = async (userId: number, teacherCode: string, firstName: string, la
   return teacher;
 };
 
-const getById = async (id: number) => {
+const get = async (id: string) => {
   const teacher = await prisma.teacher.findUniqueOrThrow({
-    where: { id },
+    where: { id: Number(id) },
   });
 
   return teacher;
@@ -50,7 +50,7 @@ const remove = async (id: string) => {
 
 export default {
   create,
-  getById,
+  get,
   getAll,
   update,
   remove,
