@@ -3,7 +3,7 @@ import userController from "../controllers/user";
 
 const router = Router();
 
-router.get("/", (req, resp) => userController.get(req, resp));
+router.get("/:id", (req, resp) => userController.get(req, resp));
 router.put("/", (req, resp) => userController.update(req, resp));
 router.delete("/", (req, resp) => userController.remove(req, resp));
 

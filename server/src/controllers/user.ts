@@ -3,7 +3,7 @@ import userService from "../services/user";
 
 const get = async (req: Request, resp: Response) => {
   try {
-    const id: number = req.body.id;
+    const { id } = req.params;
 
     const user = await userService.get(id);
 

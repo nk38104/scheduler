@@ -1,8 +1,8 @@
 import { prisma } from "../utils/prisma.db";
 
-const get = async (id: number) => {
+const get = async (id: string) => {
   const user = await prisma.user.findUniqueOrThrow({
-    where: { id },
+    where: { id: Number(id) },
   });
 
   return user;
