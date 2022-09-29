@@ -21,12 +21,8 @@ const getById = async (id: number) => {
   return teacher;
 };
 
-const getAll = async (userId: number) => {
-  const teacher = await prisma.teacher.findMany({
-    where: {
-      userId,
-    },
-  });
+const getAll = async () => {
+  const teacher = await prisma.teacher.findMany();
 
   return teacher;
 };
