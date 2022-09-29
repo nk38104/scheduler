@@ -20,10 +20,10 @@ const get = async (id: string) => {
   return timetable;
 };
 
-const update = async (id: number, newTimetableData: Prisma.JsonObject) => {
+const update = async (id: string, newTimetableData: Prisma.JsonObject) => {
   const timetable = await prisma.timetable.update({
     where: {
-      userId: id,
+      id: Number(id),
     },
     data: {
       timetableData: newTimetableData,
@@ -33,9 +33,9 @@ const update = async (id: number, newTimetableData: Prisma.JsonObject) => {
   return timetable;
 };
 
-const remove = async (id: number) => {
+const remove = async (id: string) => {
   const timetable = await prisma.timetable.delete({
-    where: { id },
+    where: { id: Number(id) },
   });
 
   return timetable;

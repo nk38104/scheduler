@@ -27,7 +27,8 @@ const get = async (req: Request, resp: Response) => {
 
 const update = async (req: Request, resp: Response) => {
   try {
-    const { id, timetableData } = req.body;
+    const { id } = req.params;
+    const { timetableData } = req.body;
 
     const timetable = await timetableService.update(id, timetableData);
 
@@ -39,7 +40,7 @@ const update = async (req: Request, resp: Response) => {
 
 const remove = async (req: Request, resp: Response) => {
   try {
-    const id: number = req.body.id;
+    const { id } = req.params;
 
     const timetable = await timetableService.remove(id);
 
