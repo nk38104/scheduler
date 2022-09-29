@@ -31,11 +31,9 @@ const get = async (req: Request, resp: Response) => {
   }
 };
 
-const getAll = async (req: Request, resp: Response) => {
+const getAll = async (_req: Request, resp: Response) => {
   try {
-    const userId: number = req.body.id;
-
-    const subjects = await subjectService.getAll(userId);
+    const subjects = await subjectService.getAll();
 
     resp.status(200).json(subjects);
   } catch (err: any) {

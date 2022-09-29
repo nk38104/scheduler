@@ -28,12 +28,8 @@ const get = async (id: string) => {
   return subject;
 };
 
-const getAll = async (userId: number) => {
-  const subject = await prisma.subject.findMany({
-    where: {
-      userId,
-    },
-  });
+const getAll = async () => {
+  const subject = await prisma.subject.findMany();
 
   return subject;
 };
