@@ -12,9 +12,9 @@ const create = async (userId: number, name: string, studentCount: number) => {
   return schoolClass;
 };
 
-const getById = async (id: number) => {
+const get = async (id: string) => {
   const schoolClass = await prisma.class.findUniqueOrThrow({
-    where: { id },
+    where: { id: Number(id) },
   });
 
   return schoolClass;
@@ -30,9 +30,9 @@ const getAll = async (userId: number) => {
   return schoolClass;
 };
 
-const update = async (id: number, name: string, studentCount: number) => {
+const update = async (id: string, name: string, studentCount: number) => {
   const schoolClass = await prisma.class.update({
-    where: { id },
+    where: { id: Number(id) },
     data: {
       name,
       studentCount,
@@ -42,9 +42,9 @@ const update = async (id: number, name: string, studentCount: number) => {
   return schoolClass;
 };
 
-const remove = async (id: number) => {
+const remove = async (id: string) => {
   const schoolClass = await prisma.class.delete({
-    where: { id },
+    where: { id: Number(id) },
   });
 
   return schoolClass;
@@ -52,7 +52,7 @@ const remove = async (id: number) => {
 
 export default {
   create,
-  getById,
+  get,
   getAll,
   update,
   remove,

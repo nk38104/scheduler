@@ -15,9 +15,9 @@ const create = async (req: Request, resp: Response) => {
 
 const get = async (req: Request, resp: Response) => {
   try {
-    const id: number = req.body.id;
+    const { id } = req.params;
 
-    const schoolClass = await classService.getById(id);
+    const schoolClass = await classService.get(id);
 
     resp.status(200).json(schoolClass);
   } catch (err: any) {
@@ -39,7 +39,8 @@ const getAll = async (req: Request, resp: Response) => {
 
 const update = async (req: Request, resp: Response) => {
   try {
-    const { id, name, studentCount } = req.body;
+    const { id } = req.params;
+    const { name, studentCount } = req.body;
 
     const schoolClass = await classService.update(id, name, studentCount);
 
@@ -51,7 +52,7 @@ const update = async (req: Request, resp: Response) => {
 
 const remove = async (req: Request, resp: Response) => {
   try {
-    const id: number = req.body.id;
+    const { id } = req.params;
 
     const schoolClass = await classService.remove(id);
 
