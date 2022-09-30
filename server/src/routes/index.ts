@@ -1,4 +1,5 @@
 import classroomRouter from "./classroom";
+import classRouter from "./class";
 import { Router } from "express";
 import subjectRouter from "./subject";
 import teacherRouter from "./teacher";
@@ -12,5 +13,6 @@ router.use("/timetables", timetableRouter);
 router.use("/classrooms", classroomRouter);
 router.use("/subjects", subjectRouter);
 router.use("/teachers", teacherRouter);
+router.use("/classes", classRouter);
 
 export default router;
